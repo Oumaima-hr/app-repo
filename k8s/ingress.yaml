@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-app-ingress
+spec:
+  rules:
+  - host: demo-app.local  # Le nom de domaine ou l'IP publique pour accéder à l'application
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: demo-app-service  # Le nom du service défini dans service.yaml
+            port:
+              number: 80
