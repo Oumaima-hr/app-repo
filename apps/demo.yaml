@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-dev
+  namespace: argocd
+spec:
+  project: default  # Ajout du champ project
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default  # Utilisation du namespace 'default' pour DEV
+  source:
+    repoURL: 'https://github.com/Oumaima-hr/app-repo'  # Ton dépôt Git
+    targetRevision: HEAD
+    path: helm
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
