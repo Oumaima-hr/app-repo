@@ -4,14 +4,13 @@ metadata:
   name: myapp-dev
   namespace: argocd
 spec:
-  project: default  # Ajout du champ project
   destination:
     server: https://kubernetes.default.svc
-    namespace: default  # Utilisation du namespace 'default' pour DEV
+    namespace: default  # DEV namespace
   source:
-    repoURL: 'https://github.com/Oumaima-hr/app-repo'  # Ton dépôt Git
+    repoURL: 'https://github.com/Oumaima-hr/app-repo'  # Your GitHub repo URL
     targetRevision: HEAD
-    path: helm
+    path: k8s  # Use 'k8s' instead of 'helm'
   syncPolicy:
     automated:
       prune: true
